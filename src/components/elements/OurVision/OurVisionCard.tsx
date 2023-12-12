@@ -2,6 +2,7 @@ import React from 'react';
 import Icon from "@/components/ui/Icon";
 import {LucideIcon} from "lucide-react";
 import GradiantCard from "@/components/ui/GradiantCard";
+import {Title} from "@/components/ui/Title";
 
 interface props {
     icon: LucideIcon,
@@ -15,8 +16,7 @@ function OurVisionCard(props: props) {
             <div className={'bg-background  w-fit p-3 mb-5 rounded-2xl'}>
                 <Icon name={props.icon} color={'white'} size={40} opacity={0.6}/>
             </div>
-
-            <h1 className={'font-bold text-3xl'}>{props.title}</h1>
+            <Title>{props.title}</Title>
             <p>{props.description}</p>
         </GradiantCard>
     );

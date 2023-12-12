@@ -9,10 +9,8 @@
 
         --appbar-links-background: #296A9E;
 
-
         --text-color: #F1F8FE;
-
-
+        
         --card: 0 0% 100%;
         --card-foreground: 222.2 84% 4.9%;
 
@@ -83,6 +81,11 @@
 
     main, nav {
         @apply max-w-7xl mx-auto px-10  ;
+    }
+
+    .gradiantText {
+        background: linear-gradient(270deg, #FFF 25.59%, var(--primary) 83.64%);
+
     }
 
     p {

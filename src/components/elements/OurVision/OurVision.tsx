@@ -8,7 +8,7 @@ interface props {
 
 function OurVision(props: props) {
     return (
-        <section id={props.id} className={'select-none'}>
+        <section id={props.id}>
             <div className={'flex flex-col md:flex-row gap-10'}>
                 <OurVisionCard icon={icons['Eye']} title={'الرؤية'}
                                description={'تحقيق الريادة في مجال تقديم خدمات القيمة المضافة ورسائل الـ(Bulk) والحلول البرمجية'}/>
