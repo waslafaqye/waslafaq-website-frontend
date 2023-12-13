@@ -3,10 +3,7 @@
 import * as React from "react"
 import {NavbarItem} from "@/components/elements/Navbar/NavbarItem";
 import Image from "next/image";
-import {Button} from "@/components/ui/button";
-import Icon from "@/components/ui/Icon";
-import {icons} from "lucide-react";
-import {Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger,} from "@/components/ui/sheet"
+import {MobileMenu} from "@/components/elements/Navbar/MobileMenu";
 
 export default function Navbar() {
 
@@ -22,26 +19,7 @@ export default function Navbar() {
                        alt={'logo'}/>
             </div>
 
-
-            <Sheet>
-                <SheetTrigger>
-                    <Button className={'bg-white/20 lg:hidden flex  backdrop-blur shadow-none h-12 rounded-xl'}><Icon
-                        name={icons['Menu']}
-                        color={'white'}
-                        size={20}
-                        opacity={0.7}/>
-                    </Button>
-                </SheetTrigger>
-                <SheetContent className={'z-[10000] bg-background'}>
-                    <SheetHeader>
-                        <SheetTitle>Are you sure absolutely sure?</SheetTitle>
-                        <SheetDescription>
-                            This action cannot be undone. This will permanently delete your account
-                            and remove your data from our servers.
-                        </SheetDescription>
-                    </SheetHeader>
-                </SheetContent>
-            </Sheet>
+            <MobileMenu/>
 
             <ul className={'hidden lg:flex items-center backdrop-blur bg-appbarLinksBackground rounded-full'}>
                 <NavbarItem active={true}>الرئيسية</NavbarItem>

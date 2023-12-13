@@ -10,7 +10,7 @@
         --appbar-links-background: #296A9E;
 
         --text-color: #F1F8FE;
-        
+
         --card: 0 0% 100%;
         --card-foreground: 222.2 84% 4.9%;
 
@@ -93,7 +93,7 @@
     }
 
     .activeLink {
-        @apply bg-primary m-2 rounded-full py-1 px-3;
+        @apply bg-primary lg:m-2 rounded-full py-1 px-3;
     }
 
     .gradiantCard {
@@ -103,5 +103,12 @@
         padding: 2rem;
     }
 
+    div[role='dialog'] button[type='button'] {
+        @apply w-fit   hidden ;
+    }
+
+    div[role='dialog'] button svg {
+        @apply h-5 w-5;
+    }
 
 }

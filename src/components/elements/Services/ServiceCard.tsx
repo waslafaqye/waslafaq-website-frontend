@@ -15,15 +15,16 @@ type Props = {
 export const ServiceCard = (props: Props) => {
     return (
         props.horizontal ?
-            <GradiantCard className={' lg:mt-0 mt-10 flex items-center gap-x-5'}>
+            <GradiantCard className={' lg:mt-0 mt-10 flex flex-col lg:flex-row items-center gap-x-5'}>
                 <Image src={props.image} height={400} width={600}
-                       className={`h-32 object-center object-fill rounded-xl w-32`}
+                       className={`lg:h-32  object-center object-cover rounded-xl h-52 mb-6 lg:mb-0 w-full lg:w-32 `}
                        alt={'Service logo'}/>
                 <div>
                     <Title>{props.title}</Title>
-                    <p className={'mt-6'}>{props.description}</p>
+                    <p className={'my-6 lg:mb-0'}>{props.description}</p>
                 </div>
-                <PrimaryButton className={'w-fit !px-4 !py-7 !rounded-full'} icon={icons['ArrowLeft']}/>
+                <PrimaryButton className={'w-fit hidden lg:flex !px-4 !py-7 !rounded-full'} icon={icons['ArrowLeft']}/>
+                <PrimaryButton className={'w-full  lg:hidden'} icon={icons['ArrowLeft']} title={'اطلب الخدمة'}/>
             </GradiantCard>
             :
             <GradiantCard className={'lg:mt-0 mt-10 flex flex-col h-full   justify-between'}>
