@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
     :root {
         --background: #115993;
@@ -10,6 +11,8 @@
         --appbar-links-background: #296A9E;
 
         --text-color: #F1F8FE;
+
+        --slider-inactive-arrow-background: #1383B6;
 
         --card: 0 0% 100%;
         --card-foreground: 222.2 84% 4.9%;
@@ -75,6 +78,20 @@
         @apply border-border;
     }
 
+    .embla {
+        overflow: hidden;
+        width: 50%;
+    }
+
+    .embla__container {
+        display: flex;
+    }
+
+    .embla__slide {
+        flex: 0 0 100%;
+        min-width: 0;
+    }
+
     body {
         @apply bg-background text-foreground;
     }
@@ -84,7 +101,7 @@
     }
 
     .gradiantText {
-        background: linear-gradient(270deg, #FFF 25.59%, var(--primary) 83.64%);
+        background: linear-gradient(270deg, rgba(255, 255, 255, 0.8) 10.59%, var(--primary) 83.64%);
 
     }
 
@@ -100,9 +117,10 @@
         border-radius: 26px;
         background: radial-gradient(57.5% 55.28% at 50% 52%, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.10) 100%);
         backdrop-filter: blur(21px);
-        padding: 2rem;
+        padding: 1.5rem;
     }
 
+   
     div[role='dialog'] button[type='button'] {
         @apply w-fit   hidden ;
     }

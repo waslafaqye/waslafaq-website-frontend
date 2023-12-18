@@ -22,6 +22,7 @@ module.exports = {
             colors: {
                 appbarLinksBackground: "var(--appbar-links-background)",
                 textColor: "var(--text-color)",
+                sliderInactiveArrowBackground: "var(--slider-inactive-arrow-background)",
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
                 ring: "hsl(var(--ring))",
