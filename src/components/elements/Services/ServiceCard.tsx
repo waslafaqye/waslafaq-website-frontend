@@ -23,11 +23,12 @@ export const ServiceCard = (props: Props) => {
                     <Title>{props.title}</Title>
                     <p className={'my-6 lg:mb-0'}>{props.description}</p>
                 </div>
-                <PrimaryButton className={'w-fit hidden lg:flex !px-4 !py-7 !rounded-full'} icon={icons['ArrowLeft']}/>
-                <PrimaryButton className={'w-full  lg:hidden'} icon={icons['ArrowLeft']} title={'اطلب الخدمة'}/>
+                <PrimaryButton className={'w-fit !hidden lg:!flex !px-4 !py-7 !rounded-full'}
+                               icon={icons['ArrowLeft']}/>
+                <PrimaryButton className={'w-full lg:hidden'} icon={icons['ArrowLeft']} title={'اطلب الخدمة'}/>
             </GradiantCard>
             :
-            <GradiantCard className={'lg:mt-0 mt-10 flex flex-col h-full   justify-between'}>
+            <GradiantCard className={'lg:mt-0 mt-10 flex flex-col h-full justify-between'}>
                 <div>
                     <Image src={props.image} height={400} width={600}
                            className={`h-52 object-center object-cover rounded-xl w-full mb-6`}

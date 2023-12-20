@@ -1,16 +1,24 @@
+'use client'
 import React from "react";
-import Link from "next/link";
+import {Link} from "react-scroll";
 
-export function NavbarItem({children, active = false, className = ''}: {
+
+export function NavbarItem({children, active = false, className = '', url = ''}: {
     children: React.ReactNode,
     active?: boolean,
+    url?: string,
     className?: string
 }) {
     return (
-        <li className={`px-5   ${active ? 'activeLink' : ''}  ${className}`}>
-            <Link className={' px-20 md:px-0 focus:bg-background active:bg-background'} href={'#'}>
-                {children}
-            </Link>
-        </li>
+        <Link
+            activeClass="activeLink"
+            to={url}
+            spy={true}
+            smooth={true}
+            offset={-100}
+            duration={500}
+            className={' lg:m-2 py-1  px-3 focus:bg-background '} href={url}>
+            {children}
+        </Link>
     );
 }

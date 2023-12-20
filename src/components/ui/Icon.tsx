@@ -8,7 +8,7 @@ const Icon = ({name, color, size, opacity = 1.0, center = false}: {
     opacity?: number
 }) => {
     const LucideIcon = name;
-    return <LucideIcon className={center ? "mx-auto" : ""} color={color} size={size} opacity={opacity}/>;
+    return <LucideIcon className={`${center ? "mx-auto" : ""} `} color={color} size={size} opacity={opacity}/>;
 };
 
 export default Icon;

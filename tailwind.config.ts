@@ -22,6 +22,8 @@ module.exports = {
             colors: {
                 appbarLinksBackground: "var(--appbar-links-background)",
                 textColor: "var(--text-color)",
+                backgroundWithOpacity: "var(--background-with-opacity)",
+                inputPlaceHolderColor: "var(--input-placeholder-color)",
                 sliderInactiveArrowBackground: "var(--slider-inactive-arrow-background)",
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
@@ -78,5 +80,10 @@ module.exports = {
             },
         },
     },
-    plugins: [require("tailwindcss-animate")],
+    plugins: [require("tailwindcss-animate"), require('tailwind-scrollbar'),],
+    variants: {
+        scrollbar: ['rounded'],
+    }
+
+
 }
