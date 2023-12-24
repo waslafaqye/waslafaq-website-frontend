@@ -1,5 +1,4 @@
 'use client'
-// @flow
 import * as React from 'react';
 import {useEffect, useState} from 'react';
 import {SectionHeader} from "@/components/ui/SectionHeader";
@@ -12,6 +11,7 @@ import {ProjectCard} from "@/components/elements/OurProjects/ProjectCard";
 
 type Props = {
     id: string,
+    header: string,
 };
 
 
@@ -19,10 +19,7 @@ export const OurProjects = (props: Props) => {
 
     const [perPageCount, setPerPageCount] = useState(3);
 
-
     function resizeScreen() {
-
-        console.log(window.screen.width);
         setPerPageCount(1);
 
         if (window.screen.width > 768) {
@@ -62,7 +59,7 @@ export const OurProjects = (props: Props) => {
                 <div className={'flex justify-between'}>
                     <div className={' w-fit  flex flex-col  '}>
                         <SectionHeader className={'!m-0'}>
-                            من اعمالنا
+                            {props.header}
                         </SectionHeader>
                         <p className={'text-xl mt-4'}>منتجات رقمية تلبي كافة احتياجك ورغباتك ويسعد بها عملائك</p>
                     </div>
@@ -88,13 +85,14 @@ export const OurProjects = (props: Props) => {
                         description={'متجر الكتروني تم العمل على التصميم والبرمجة كويب وموبايل باحدث التقنيات والادوات '}
                         image={'/images/app2.png'}
                         title={' منصة دروب اوف'}/>
-                   
+
                 </SplideTrack>
 
                 {/*<div*/}
                 {/*    className={'h-40 bottom-0 w-10 bg-gradient-to-r from-background to-transparent backdrop-blur  z-10 absolute end-0'}>*/}
 
                 {/*</div>*/}
+
             </Splide>
 
         </section>

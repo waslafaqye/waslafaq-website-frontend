@@ -87,6 +87,11 @@
         @apply border-border ;
     }
 
+
+    .hideIcon span {
+        display: none !important;
+    }
+
     .embla {
         overflow: hidden;
         width: 50%;

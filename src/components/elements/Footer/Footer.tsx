@@ -1,11 +1,27 @@
 // @flow
+'use client'
 import * as React from 'react';
 import Image from "next/image";
 import {NavbarItem} from '../Navbar/NavbarItem';
+import {useRouter} from "next/navigation";
 
-type Props = {};
+type Props = {
+    details?: boolean,
+    navItems: { title: string, url: string, isActive: boolean }[],
+
+};
 export const Footer = (props: Props) => {
     let date: Date = new Date()
+
+    const router = useRouter();
+
+
+    const handleRoute = () => {
+        if (props.details) {
+            router.back();
+        }
+    }
+
 
     return (
         <footer className={'mt-10 mb-5 text-center  w-full '}>
@@ -17,12 +33,13 @@ export const Footer = (props: Props) => {
                            alt={'logo'}/>
                 </div>
                 <ul className={'flex flex-col my-4 gap-y-10 lg:flex-row justify-center  items-center '}>
-                    <NavbarItem>الرئيسية</NavbarItem>
-                    <NavbarItem>من نحن</NavbarItem>
-                    <NavbarItem>الخدمات</NavbarItem>
-                    <NavbarItem>العملاء</NavbarItem>
-                    <NavbarItem>اعمالنا</NavbarItem>
-                    <NavbarItem>تواصل معنا</NavbarItem>
+                    {
+                        props.navItems.map((item) =>
+                            <NavbarItem key={item.url}
+                                        details={props.details}
+                                        url={item.url}>{item.title}</NavbarItem>
+                        )
+                    }
                 </ul>
             </div>
             <div className={'h-[2px] rounded-full opacity-75 my-4 bg-appbarLinksBackground w-full'}></div>

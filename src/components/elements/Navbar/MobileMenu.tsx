@@ -6,7 +6,9 @@ import {icons} from "lucide-react";
 import Image from "next/image";
 import {NavbarItem} from "@/components/elements/Navbar/NavbarItem";
 
-type Props = {};
+type Props = {
+    links: { title: string, url: string, isActive: boolean }[],
+};
 export const MobileMenu = (props: Props) => {
     return (
         <div>
@@ -34,12 +36,13 @@ export const MobileMenu = (props: Props) => {
                                 opacity={0.7}/></SheetClose>
                     </SheetHeader>
                     <ul className={' mt-20 flex flex-col  h-[80%] text-center gap-y-5'}>
-                        <NavbarItem active={true}>الرئيسية</NavbarItem>
-                        <NavbarItem>من نحن</NavbarItem>
-                        <NavbarItem>الخدمات</NavbarItem>
-                        <NavbarItem>العملاء</NavbarItem>
-                        <NavbarItem>اعمالنا</NavbarItem>
-                        <NavbarItem className={'mt-auto border rounded-full py-2'}>تواصل معنا</NavbarItem>
+
+                        {props.links.map(item => (
+                            <NavbarItem
+                                key={props.links.indexOf(item)}
+                                url={item.url}
+                                active={item.isActive}>{item.title}</NavbarItem>
+                        ))}
                     </ul>
                 </SheetContent>
             </Sheet>

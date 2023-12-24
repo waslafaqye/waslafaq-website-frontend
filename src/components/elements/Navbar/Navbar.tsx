@@ -1,62 +1,16 @@
-"use client"
-
+'use client'
 import * as React from "react"
-import {PropsWithChildren} from "react"
 import Image from "next/image";
 import {MobileMenu} from "@/components/elements/Navbar/MobileMenu";
 import {NavbarItem} from "@/components/elements/Navbar/NavbarItem";
-import Link, {LinkProps} from "next/link";
-
-export default function Navbar() {
-
-    let navItems = [
-        {
-            title: "الرئيسية",
-            url: "#Hero",
-            isActive: true,
-        }, {
-            title: "من نحن",
-            url: "#AboutUs",
-            isActive: false,
-        }, {
-            title: "الخدمات",
-            url: "#Services",
-            isActive: false,
-        }, {
-            title: "عملائنا",
-            url: "#OurClients",
-            isActive: false,
-        }, {
-            title: "اعمالنا",
-            url: "#OurProjects",
-            isActive: false,
-        }, {
-            title: "تواصل معنا",
-            url: "#ContactUs",
-            isActive: false,
-        },
-    ];
+import Link from "next/link";
+import LocaleSwitcher from "@/components/elements/Navbar/LanguageSwitcher";
 
 
-    type AnchorProps = Omit<
-        React.AnchorHTMLAttributes<HTMLAnchorElement>,
-        keyof LinkProps
-    >;
-    type ScrollLinkProps = AnchorProps & LinkProps & PropsWithChildren;
-// component definition
-
-    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,) => {
-        e.preventDefault();
-
-
-        // const targetId = e.currentTarget.href.replace(/.*\#/, "");
-        const elem = document.getElementById('#Services');
-
-        window.scrollTo({
-            top: elem?.getBoundingClientRect().top,
-            behavior: "smooth",
-        });
-    };
+export default function Navbar({details = false, navItems}: {
+    details: boolean,
+    navItems: { title: string, url: string, isActive: boolean }[]
+}) {
 
 
     return (
@@ -72,16 +26,28 @@ export default function Navbar() {
                            alt={'logo'}/>
                 </Link>
 
-                <MobileMenu/>
+                <div className={'flex gap-4 lg:hidden'}>
+                    <LocaleSwitcher/>
+                    <MobileMenu links={navItems}/>
+                </div>
 
-                <ul className={'hidden lg:flex items-center backdrop-blur bg-appbarLinksBackground rounded-full'}>
-                    {navItems.map(item => (
-                        <NavbarItem
-                            key={navItems.indexOf(item)}
-                            url={item.url}
-                            active={item.isActive}>{item.title}</NavbarItem>
-                    ))}
-                </ul>
+                <div className={'hidden lg:flex items-center gap-5 '}>
+
+
+                    <ul className={' flex backdrop-blur bg-appbarLinksBackground rounded-full'}>
+
+                        {navItems.map(item => (
+                            <NavbarItem
+
+                                key={navItems.indexOf(item)}
+                                url={details ? '' : item.url}
+                                details={details}>{item.title}</NavbarItem>
+                        ))}
+                    </ul>
+                    <LocaleSwitcher/>
+                </div>
+
+
             </div>
 
 

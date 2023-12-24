@@ -1,3 +1,4 @@
+'use client'
 // @flow
 import * as React from 'react';
 import {SectionHeader} from "@/components/ui/SectionHeader";
@@ -5,12 +6,14 @@ import {ServiceCard} from "@/components/elements/Services/ServiceCard";
 
 type Props = {
     id: string,
+    page: any,
 };
 export const Services = (props: Props) => {
+
     return (
         <section id={props.id} className={'text-center my-24'}>
 
-            <SectionHeader>الخدمات</SectionHeader>
+            <SectionHeader>{props.page.Services}</SectionHeader>
             <p className={' w-full lg:w-1/2 mx-auto  mt-7'}>يمكنك الاطلاع على مختلف الخدمات التي نقدمها من أجلك، اختر
                 ماتريد
                 واطلب
