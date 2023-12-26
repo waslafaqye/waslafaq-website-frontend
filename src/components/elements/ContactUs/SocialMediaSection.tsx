@@ -1,17 +1,18 @@
-// @flow
 import * as React from 'react';
 import {SocialMediaElement} from "@/components/elements/ContactUs/SocialMediaElement";
-import {icons} from "lucide-react";
+import SocialMediaData from "@/data/SocialMediaData";
 
-type Props = {};
+
+type Props = {
+    socialLinks: SocialMediaData,
+};
 export const SocialMediaSection = (props: Props) => {
     return (
         <div className={'flex mt-6 gap-5'}>
-            <SocialMediaElement icon={icons['Facebook']} url={'#'}/>
-            <SocialMediaElement icon={icons['Twitter']} url={'#'}/>
-            <SocialMediaElement icon={icons['Instagram']} url={'#'}/>
-            <SocialMediaElement icon={icons['Youtube']} url={'#'}/>
-          
+            {
+                props.socialLinks.socialMediaList.map(link => <SocialMediaElement key={link.id} url={link.url}/>)
+            }
+
         </div>
     );
 };

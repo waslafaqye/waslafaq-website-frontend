@@ -8,6 +8,13 @@
     "ContactUS": "تواصل معنا",
     "Clients": "عملائنا",
     "OrderNow": "اطلب الان",
-    "KnowMore": "تعرف على وصل افاق اكثر"
+    "KnowMore": "تعرف على وصل افاق اكثر",
+    "AllRightReserved": "جميع الحقوق محفوظة لدى وصل افاق",
+    "direction": "rtl",
+    "Name": "الاسم",
+    "Email": "البريد الإلكتروني",
+    "Address": "عنوان الطلب",
+    "RequestContent": "نص الطلب",
+    "Send": "إرسال الطلب"
   }
 }

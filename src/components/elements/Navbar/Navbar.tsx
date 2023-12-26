@@ -5,11 +5,13 @@ import {MobileMenu} from "@/components/elements/Navbar/MobileMenu";
 import {NavbarItem} from "@/components/elements/Navbar/NavbarItem";
 import Link from "next/link";
 import LocaleSwitcher from "@/components/elements/Navbar/LanguageSwitcher";
+import SettingsData from "@/data/SettingsData";
 
 
-export default function Navbar({details = false, navItems}: {
+export default function Navbar({details = false, navItems, info}: {
     details: boolean,
-    navItems: { title: string, url: string, isActive: boolean }[]
+    navItems: { title: string, url: string, isActive: boolean }[],
+    info?: SettingsData,
 }) {
 
 
@@ -20,7 +22,8 @@ export default function Navbar({details = false, navItems}: {
 
             <div className={'max-w-7xl flex justify-between items-center mx-auto'}>
                 <Link href={'/'} className={'flex h-16'}>
-                    <Image src={'/images/logo.svg'} className={'h-auto w-auto'} height={5} width={5} alt={'logo'}/>
+                    <Image src={info!.logo} objectFit="cover"
+                           priority className={'h-auto w-auto'} height={400} width={400} alt={'logo'}/>
                     <Image src={'/images/logoText.svg'} className={'h-auto w-auto hidden md:flex'} height={80}
                            width={200}
                            alt={'logo'}/>

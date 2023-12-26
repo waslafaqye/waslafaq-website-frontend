@@ -8,6 +8,7 @@ import {useRouter} from "next/navigation";
 type Props = {
     details?: boolean,
     navItems: { title: string, url: string, isActive: boolean }[],
+    page: any,
 
 };
 export const Footer = (props: Props) => {
@@ -43,7 +44,7 @@ export const Footer = (props: Props) => {
                 </ul>
             </div>
             <div className={'h-[2px] rounded-full opacity-75 my-4 bg-appbarLinksBackground w-full'}></div>
-            <p className={'opacity-75'}>جميع الحقوق محفوظة لدى وصل افاق {date.getFullYear()}</p>
+            <p className={'opacity-75'}>{props.page.AllRightReserved} {date.getFullYear()}</p>
         </footer>
     );
 };

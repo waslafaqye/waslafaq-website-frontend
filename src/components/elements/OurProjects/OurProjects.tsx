@@ -7,11 +7,15 @@ import {Splide, SplideSlide, SplideTrack} from "@splidejs/react-splide";
 import '@splidejs/react-splide/css';
 import {ArrowLeft} from "lucide-react";
 import {Button} from "@/components/ui/button";
+import SettingsData from "@/data/SettingsData";
+import OurProjectsData from "@/data/OurProjectsData";
 import {ProjectCard} from "@/components/elements/OurProjects/ProjectCard";
 
 type Props = {
     id: string,
-    header: string,
+    page: any,
+    info: SettingsData,
+    projects: OurProjectsData,
 };
 
 
@@ -42,13 +46,13 @@ export const OurProjects = (props: Props) => {
     }, []);
 
     return (
-        <section id={props.id} className={'my-24    md:w-[95%]  mx-auto  '}>
+        <section id={props.id} className={'my-24   md:w-[95%]  mx-auto  '}>
             <Splide hasTrack={false} className={'relative '} options={{
                 rewind: true,
-                direction: 'rtl',
+                direction: props.page.direction,
                 perPage: perPageCount,
                 updateOnMove: true,
-                //autoplay: true,
+                autoplay: true,
                 //pauseOnHover: false,
                 pagination: true,
                 //type:'loop',
@@ -57,11 +61,12 @@ export const OurProjects = (props: Props) => {
                 gap: 0,
             }} aria-label="My Favorite Images">
                 <div className={'flex justify-between'}>
-                    <div className={' w-fit  flex flex-col  '}>
+                    <div
+                        className={' w-fit  flex flex-col items-center justify-center lg:items-start lg:justify-start  '}>
                         <SectionHeader className={'!m-0'}>
-                            {props.header}
+                            {props.info.projectsTitle}
                         </SectionHeader>
-                        <p className={'text-xl mt-4'}>منتجات رقمية تلبي كافة احتياجك ورغباتك ويسعد بها عملائك</p>
+                        <p className={'text-xl mx-auto text-center w-fit mt-4'}>{props.info.projectsSubtitle}</p>
                     </div>
                     <div className="splide__arrows relative hidden md:flex me-14 ">
                         <Button
@@ -75,16 +80,17 @@ export const OurProjects = (props: Props) => {
                         </Button>
                     </div>
                 </div>
-                <SplideTrack className={'mt-10'}>
+                <SplideTrack className={'mt-10  mx-auto'}>
 
-                    <ProjectCard
-                        description={'متجر الكتروني تم العمل على التصميم والبرمجة كويب وموبايل باحدث التقنيات والادوات '}
-                        image={'/images/app1.png'}
-                        title={' منصة دروب اوف'}/>
-                    <ProjectCard
-                        description={'متجر الكتروني تم العمل على التصميم والبرمجة كويب وموبايل باحدث التقنيات والادوات '}
-                        image={'/images/app2.png'}
-                        title={' منصة دروب اوف'}/>
+
+                    {
+                        props.projects.ourProjectList.map(project => <ProjectCard
+                            key={project.id}
+                            description={project.description}
+                            image={project.image}
+                            title={project.title}/>)
+                    }
+
 
                 </SplideTrack>
 

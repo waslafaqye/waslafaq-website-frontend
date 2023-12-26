@@ -41,7 +41,7 @@ export const MobileMenu = (props: Props) => {
                             <NavbarItem
                                 key={props.links.indexOf(item)}
                                 url={item.url}
-                                active={item.isActive}>{item.title}</NavbarItem>
+                            >{item.title}</NavbarItem>
                         ))}
                     </ul>
                 </SheetContent>

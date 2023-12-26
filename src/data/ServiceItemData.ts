@@ -1,4 +1,4 @@
-class ServiceItemData {
+export default class ServiceItemData {
     image: string;
     title: string;
     description: string;

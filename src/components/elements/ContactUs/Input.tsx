@@ -16,10 +16,12 @@ export const InputForm = (props: Props) => {
         props.isTextArea ? <FormField
                 control={props.control}
                 name={props.name}
+
                 render={({field}) => (
                     <FormItem className={'mt-4'}>
                         <FormControl>
                             <Textarea
+
                                 placeholder={props.placeholder}
                                 className={'border-none rounded-2xl resize-none shadow-none peer h-full min-h-[137px] w-full  p-4 text-lg focus-visible:ring-0  autofill:caret-blue-800 bg-appbarLinksBackground placeholder:text-inputPlaceHolderColor'}
                                 {...field}

@@ -1,9 +1,9 @@
-class ServicesData {
-    content: string;
+import ServiceItemData from "@/data/ServiceItemData";
+
+export default class ServicesData {
     servicesList: ServiceItemData[];
 
-    constructor(content: string, serviceList: ServiceItemData[]) {
-        this.content = content;
+    constructor(serviceList: ServiceItemData[]) {
         this.servicesList = serviceList;
     }
 

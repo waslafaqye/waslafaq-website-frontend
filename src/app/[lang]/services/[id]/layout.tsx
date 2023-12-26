@@ -45,7 +45,7 @@ export default async function Layout({params}: { params: { id: string, lang: Loc
             <Navbar navItems={navItems} details={true}/>
             <div className={' max-w-7xl pt-28 px-4 mx flex flex-col gap-y-10 '}>
                 <ServiceDetails id={id}/>
-                <Footer navItems={navItems} details={true} lang={params.lang}/>
+                <Footer page={page} navItems={navItems} details={true}/>
             </div>
         </div>
     );

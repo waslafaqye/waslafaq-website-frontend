@@ -11,21 +11,26 @@ type Props = {
     title: string,
     description: string,
     horizontal?: true,
+    buttonText: string,
 };
 export const ServiceCard = (props: Props) => {
     return (
         props.horizontal ?
-            <GradiantCard className={' lg:mt-0 mt-10 flex flex-col lg:flex-row items-center gap-x-5'}>
-                <Image src={props.image} height={400} width={600}
-                       className={`lg:h-32  object-center object-cover rounded-xl h-52 mb-6 lg:mb-0 w-full lg:w-32 `}
-                       alt={'Service logo'}/>
-                <div>
-                    <Title>{props.title}</Title>
-                    <p className={'my-6 lg:mb-0'}>{props.description}</p>
+            <GradiantCard
+                className={' lg:mt-0 mt-10 flex flex-col lg:justify-between lg:flex-row items-center gap-x-5'}>
+                <div className={'flex flex-col  lg:flex-row items-center gap-x-5'}>
+                    <Image src={props.image} height={400} width={600}
+                           className={`lg:h-32  object-center object-cover rounded-xl h-52 mb-6 lg:mb-0 w-full lg:w-32 `}
+                           alt={'Service logo'}/>
+                    <div>
+                        <Title>{props.title}</Title>
+                        <p className={'my-6 lg:mb-0'}>{props.description}</p>
+                    </div>
                 </div>
+
                 <PrimaryButton className={'w-fit !hidden lg:!flex !px-4 !py-7 !rounded-full'}
                                icon={icons['ArrowLeft']}/>
-                <PrimaryButton className={'w-full lg:hidden'} icon={icons['ArrowLeft']} title={'اطلب الخدمة'}/>
+                <PrimaryButton className={'w-full lg:hidden'} icon={icons['ArrowLeft']} title={props.buttonText}/>
             </GradiantCard>
             :
             <GradiantCard className={'lg:mt-0 mt-10 flex flex-col h-full justify-between'}>
@@ -37,7 +42,7 @@ export const ServiceCard = (props: Props) => {
                     <p className={'my-6'}>{props.description}</p>
                 </div>
 
-                <PrimaryButton className={'w-full'} icon={icons['ArrowLeft']} title={'اطلب الخدمة'}/>
+                <PrimaryButton className={'w-full'} icon={icons['ArrowLeft']} title={props.buttonText}/>
             </GradiantCard>
 
     );

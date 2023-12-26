@@ -2,17 +2,20 @@ import React from "react";
 import {Locale} from "../../../i18n.config";
 import {getDictionary} from "@/lib/dictionary";
 import {Main} from "@/components/elements/Main/Main";
+import {getInitialInfo} from "@/lib/gettingWebsiteInfo";
+import {gettingServices} from "@/lib/gettingServices";
+import {gettingClients} from "@/lib/gettingClients";
+import {gettingProjects} from "@/lib/gettingProjects";
+import {gettingSocialMedia} from "@/lib/gettingSocialMedia";
 
 export default async function Home({params: {lang}}: { params: { lang: Locale } }) {
-    //
-    //
-    // setTimeout(async () => {
-    //     const response = await fetch('http://website.waslafaq.net/api/settings');
-    //
-    //     const data = await response.json();
-    //
-    //     console.log(data);
-    // }, 200000)
+
+
+    const data = JSON.stringify(await getInitialInfo(lang))
+    const services = JSON.stringify(await gettingServices(lang))
+    const clients = JSON.stringify(await gettingClients(lang))
+    const projects = JSON.stringify(await gettingProjects(lang))
+    const socialLinks = JSON.stringify(await gettingSocialMedia(lang))
 
 
     const {page} = await getDictionary(lang);
@@ -43,7 +46,9 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
             isActive: false,
         },
     ];
+
     return (
-        <Main navItems={navItems} page={page}/>
+        <Main socialLinks={socialLinks} projects={projects} clients={clients} services={services} data={data}
+              navItems={navItems} page={page}/>
     )
 }

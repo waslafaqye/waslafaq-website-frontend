@@ -8,6 +8,13 @@
     "ContactUS": "Contact us",
     "Clients": "Our clients",
     "OrderNow": "Order now",
-    "KnowMore": "Know more about Waslafaq"
+    "KnowMore": "Know more about Waslafaq",
+    "AllRightReserved": "All rights reserved by Waslafaq",
+    "direction": "ltr",
+    "Name": "Name",
+    "Email": "Email",
+    "Address": "Request title",
+    "RequestContent": "Request content",
+    "Send": "Send Request"
   }
 }

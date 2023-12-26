@@ -1,9 +1,11 @@
-class OurProjectsData {
-    content: string;
+import OurProjectsDataItem from "@/data/OurProjectsDataItem";
+
+export default class OurProjectsData {
+
     ourProjectList: OurProjectsDataItem[];
 
-    constructor(content: string, ourProjectList: OurProjectsDataItem[]) {
-        this.content = content;
+    constructor(ourProjectList: OurProjectsDataItem[]) {
+
         this.ourProjectList = ourProjectList;
     }
 }

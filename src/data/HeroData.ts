@@ -1,4 +1,4 @@
-class HeroData {
+export default class HeroData {
     image: string;
     heading: string;
     subHeading: string;
@@ -10,5 +10,4 @@ class HeroData {
         this.subHeading = subHeading;
         this.profileUrl = profileUrl;
     }
-
 }
