@@ -5,12 +5,13 @@ import {SocialMediaSection} from "@/components/elements/ContactUs/SocialMediaSec
 import {FormSection} from "@/components/elements/ContactUs/FormSection";
 import SettingsData from "@/data/SettingsData";
 import SocialMediaData from "@/data/SocialMediaData";
+import postRequest from "@/lib/submitPost";
+
 
 type Props = {
     info: SettingsData,
     socialLinks: SocialMediaData,
     page: any,
-
 };
 export const InfoSection = (props: Props) => {
     return (
@@ -19,14 +20,12 @@ export const InfoSection = (props: Props) => {
                 <ul>
                     <InfoElement title={props.info.locationTitle} info={props.info.locationSubtitle}
                                  icon={icons['MapPin']}/>
-                    <InfoElement title={props.info.phoneTitle} info={props.info.phoneSubtitle}
-                                 icon={icons['Phone']}/>
-                    <InfoElement title={props.info.emailTitle} info={props.info.emailSubTitle}
-                                 icon={icons['Mail']}/>
+                    <InfoElement title={props.info.phoneTitle} info={props.info.phoneSubtitle} icon={icons['Phone']}/>
+                    <InfoElement title={props.info.emailTitle} info={props.info.emailSubTitle} icon={icons['Mail']}/>
                 </ul>
                 <SocialMediaSection socialLinks={props.socialLinks}/>
             </div>
-            <FormSection page={props.page}/>
+            <FormSection page={props.page} action={postRequest}/>
         </div>
     );
 };

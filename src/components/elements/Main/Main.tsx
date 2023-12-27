@@ -1,12 +1,8 @@
-'use client'
-// @flow
 import * as React from 'react';
-import {useEffect, useState} from 'react';
 import {GradiantCircle} from "@/components/ui/GradiantCircle";
 import Navbar from "@/components/elements/Navbar/Navbar";
 import {Hero} from "@/components/elements/Hero/Hero";
 import {Toaster} from "@/components/ui/toaster";
-import {PageLoader} from "@/components/elements/PageLoader/PageLoader";
 import SettingsData from "@/data/SettingsData";
 import ServicesData from "@/data/ServicesData";
 import ClientsData from "@/data/ClientsData";
@@ -19,6 +15,7 @@ import {OurClients} from "@/components/elements/OurClients/OurClients";
 import {ContactUs} from "@/components/elements/ContactUs/ContactUs";
 import {Footer} from "@/components/elements/Footer/Footer";
 import {OurProjects} from '../OurProjects/OurProjects';
+import {MainLoader} from "@/components/elements/Main/MainLoader";
 
 type Props = {
     navItems: { title: string, url: string, isActive: boolean }[]
@@ -38,19 +35,9 @@ export const Main = (props: Props) => {
     const projects: OurProjectsData = JSON.parse(props.projects);
     const socialLinks: SocialMediaData = JSON.parse(props.socialLinks);
 
-    const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 5000)
-    }, [])
-
-
-    if (isLoading) {
-        return <PageLoader/>
-    } else {
-        return (
+    return (
+        <MainLoader>
             <main className="flex min-h-screen select-none flex-col items-center relative ">
                 <GradiantCircle right={false}/>
                 <GradiantCircle right={true} top={true}/>
@@ -67,8 +54,8 @@ export const Main = (props: Props) => {
                 </div>
                 <Toaster/>
             </main>
-        );
-    }
+        </MainLoader>
+    );
 
 
 };

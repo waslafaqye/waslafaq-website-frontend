@@ -6,34 +6,67 @@ import {Form,} from "@/components/ui/form"
 import {InputForm} from "@/components/elements/ContactUs/Input";
 import {Button} from "@/components/ui/button";
 import * as React from "react";
-import {useTransition} from "react";
-import postRequest, {FormSchema} from "@/app/actions";
+import {useState} from "react";
+import {BeatLoader} from "react-spinners";
+import {toast} from "@/components/ui/use-toast";
 
 
-export function FormSection({page}: { page: any }) {
+export function FormSection({page, action}: { page: any; action: any }) {
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const FormSchema = z.object({
+        name: z.string().min(3, {
+            message: "يجب ان يكون الاسم على الاقل مكون من 3 احرف",
+        }),
+        email: z.string().email('البريد الالكتروني غير صحيح').min(1, {message: 'البريد الالكتروني غير صحيح'}),
+
+        message: z.string().min(20, {
+            message: 'يجب ان لا يقل نص الطلب عن 20 حرف',
+        }),
+        title: z.string(),
+    })
 
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
             name: "",
-            email: "",
-            message: "",
-            title: ""
         },
     })
-    const [isPending, startTransition] = useTransition()
 
-    // async function onSubmit(data: z.infer<typeof FormSchema>) {
-    //     // await postRequest(data);
-    // }
-    //
-    //
 
-    function onSubmit() {
-        startTransition(() => {
-            postRequest(page);
-        })
+    async function onSubmit() {
+        setIsLoading(true)
+
+        const data = {
+            name: form.getValues('name'),
+            email: form.getValues('email'),
+            message: form.getValues('message'),
+            title: form.getValues('title')
+        }
+
+        if (await action(data)) {
+            form.setValue('name', '')
+            form.setValue('email', '')
+            form.setValue('message', '')
+            form.setValue('title', '')
+
+            toast({
+                color: 'white',
+                className: 'bg-white !text-2xl ',
+                title: "Request Submitted",
+                description: "We will contact you as soon as we get your request",
+            })
+        } else {
+            toast({
+
+                className: 'bg-[red] !text-2xl border-none text-white',
+                title: "Request Error !",
+                description: "Please try again latter",
+            })
+        }
+        setIsLoading(false)
     }
 
     return (
@@ -47,10 +80,11 @@ export function FormSection({page}: { page: any }) {
                 <InputForm control={form.control} isTextArea={true} name={'message'}
                            placeholder={page.RequestContent}/>
                 <Button
-
                     type={'submit'}
-                    className={`w-full !p-6 mt-6 !justify-center rounded-xl text-xl  shadow-none  flex items-center `}>
-                    {page.Send}
+                    className={`w-full  !p-6 mt-6 !justify-center rounded-xl text-xl  shadow-none  flex items-center `}>
+                    {isLoading &&
+                        <BeatLoader size={10} color={'white'}/>}
+                    {!isLoading && page.Send}
                 </Button>
             </form>
         </Form>

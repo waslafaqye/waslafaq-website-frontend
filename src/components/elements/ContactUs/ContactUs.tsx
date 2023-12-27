@@ -1,5 +1,3 @@
-// @flow
-
 import * as React from 'react';
 import {SectionHeader} from "@/components/ui/SectionHeader";
 import {InfoSection} from "@/components/elements/ContactUs/InfoSection";

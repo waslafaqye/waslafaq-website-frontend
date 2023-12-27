@@ -1,5 +1,7 @@
-export default async function postRequest() {
+'use server'
+export default async function postRequest(data: any) {
 
+    console.log('data : ' + JSON.stringify(data));
     try {
         const apiUrl = 'http://website.waslafaq.net/api/request';
 
@@ -8,36 +10,14 @@ export default async function postRequest() {
             'Accept': 'application/json',
         };
 
-        const response = await fetch(apiUrl, {
+        return await fetch(apiUrl, {
             method: 'POST',
             cache: 'no-store',
             headers: headers,
-            body: JSON.stringify({
-                'some': 'soemthing'
-            }),
-        })
-        console.log(response.status)
-
-        //         .then((response) => {
-        //
-        //             console.log(response.status)
-        //
-        //             if (response.ok) {
-        //                 toast({
-        //                     title: "You submitted the following values:",
-        //                     description: (
-        //                         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-        //   <code className="text-white">Success</code>
-        // </pre>
-        //                     ),
-        //                 })
-        //                 return response.json();
-        //
-        //             } else {
-        //                 throw new Error(`HTTP error! Status: ${response.status}`);
-        //             }
-        //         })
-
+            body: JSON.stringify(data),
+        }).then((response) => {
+            return response.ok;
+        });
     } catch (e: any) {
         console.log("Error in function " + e)
     }
