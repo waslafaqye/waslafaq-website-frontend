@@ -24,6 +24,8 @@ export default class SettingsData {
     emailTitle: string;
     emailSubTitle: string;
     clientTitle: string;
+    long: string;
+    lat: string;
 
     constructor(
         hero: HeroData,
@@ -49,6 +51,8 @@ export default class SettingsData {
         emailTitle: string,
         emailSubTitle: string,
         clientTitle: string,
+        long: string,
+        lat: string
     ) {
         this.hero = hero;
         this.logo = logo;
@@ -73,5 +77,7 @@ export default class SettingsData {
         this.phoneSubtitle = phoneSubtitle;
         this.emailTitle = emailTitle;
         this.emailSubTitle = emailSubTitle;
+        this.lat = lat;
+        this.long = long;
     }
 }

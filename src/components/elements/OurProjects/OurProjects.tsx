@@ -10,6 +10,7 @@ import {Button} from "@/components/ui/button";
 import SettingsData from "@/data/SettingsData";
 import OurProjectsData from "@/data/OurProjectsData";
 import {ProjectCard} from "@/components/elements/OurProjects/ProjectCard";
+import {motion} from 'framer-motion';
 
 type Props = {
     id: string,
@@ -66,25 +67,60 @@ export const OurProjects = (props: Props) => {
                         <SectionHeader className={'!m-0'}>
                             {props.info.projectsTitle}
                         </SectionHeader>
-                        <p className={'text-xl mx-auto text-center w-fit mt-4'}>{props.info.projectsSubtitle}</p>
+                        <motion.p
+                            initial={{opacity: 0, y: -50}}
+                            viewport={{once: true}}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0,
+                            }}
+                            transition={{
+                                duration: 1.5,
+                                type: 'just',
+                            }}
+                            className={'text-xl mx-auto text-center w-fit mt-4'}>{props.info.projectsSubtitle}</motion.p>
                     </div>
                     <div className="splide__arrows relative hidden md:flex me-14 ">
-                        <Button
-                            className="splide__arrow splide__arrow--prev !opacity-100 !shadow-none !h-12 !p-0 !w-12 !rounded-2xl hover:!bg-primary !bg-sliderInactiveArrowBackground"><ArrowLeft
-                            className={'!h-6 !w-6 !fill-none'}/>
-                        </Button>
-                        <Button
-                            className="splide__arrow splide__arrow--next !opacity-100 !shadow-none !h-12 !w-12 !bg-sliderInactiveArrowBackground hover:!bg-primary !rounded-2xl">
-                            <ArrowLeft
+                        <motion.div
+                            initial={{opacity: 0, x: -50}}
+                            viewport={{once: true}}
+                            whileInView={{
+                                opacity: 1,
+                                x: 0,
+                            }}
+                            transition={{
+                                duration: 1.5,
+                                type: 'just',
+                            }}>
+                            <Button
+                                className="splide__arrow splide__arrow--prev !opacity-100 !shadow-none !h-12 !p-0 !w-12 !rounded-2xl hover:!bg-primary !bg-sliderInactiveArrowBackground"><ArrowLeft
                                 className={'!h-6 !w-6 !fill-none'}/>
-                        </Button>
+                            </Button>
+                        </motion.div>
+                        <motion.div initial={{opacity: 0, x: 50}}
+                                    viewport={{once: true}}
+                                    whileInView={{
+                                        opacity: 1,
+                                        x: 0,
+                                    }}
+                                    transition={{
+                                        duration: 1.5,
+                                        type: 'just',
+                                    }}>
+                            <Button
+                                className="splide__arrow splide__arrow--next !opacity-100 !shadow-none !h-12 !w-12 !bg-sliderInactiveArrowBackground hover:!bg-primary !rounded-2xl">
+                                <ArrowLeft
+                                    className={'!h-6 !w-6 !fill-none'}/>
+                            </Button>
+                        </motion.div>
                     </div>
                 </div>
                 <SplideTrack className={'mt-10  mx-auto'}>
 
 
                     {
-                        props.projects.ourProjectList.map(project => <ProjectCard
+                        props.projects.ourProjectList.map((project, index) => <ProjectCard
+                            duration={index * 0.5}
                             key={project.id}
                             description={project.description}
                             image={project.image}

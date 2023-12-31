@@ -35,7 +35,7 @@ export function NavbarItem({children, details = false, className = '', url = ''}
             smooth={true}
             offset={-100}
             duration={500}
-            className={' lg:m-2 py-1  px-3 focus:bg-background '} href={url}>
+            className={' lg:m-2 py-1 !duration-300  px-3 focus:bg-background '} href={url}>
             {children}
         </Link>
     );

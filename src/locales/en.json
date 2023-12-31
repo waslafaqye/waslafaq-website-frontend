@@ -15,6 +15,10 @@
     "Email": "Email",
     "Address": "Request title",
     "RequestContent": "Request content",
-    "Send": "Send Request"
+    "Send": "Send Request",
+    "success": "Request Submitted",
+    "successMessage": "We will contact you as soon as we get your request",
+    "error": "Request Error !",
+    "errorMessage": "Error occurred please try again latter"
   }
 }

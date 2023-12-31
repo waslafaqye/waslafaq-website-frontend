@@ -17,13 +17,15 @@ export async function getInitialInfo(locale: Locale): Promise<SettingsData> {
     const {data, errors} = await response.json()
 
     if (response.ok) {
-        //  console.log(data);
+
+
+        // console.log(data)
 
         return new SettingsData(
             new HeroData(data['hero_image'], data['hero_text'], data['hero_detail_text'], data['file']),
             data['logo'],
-            data['title_contactus'],
-            data['description_contactus'],
+            data['title_contantus'],
+            data['description_contantus'],
             data['title_vision'],
             data['description_vision'],
             data['title_goals'],
@@ -42,7 +44,9 @@ export async function getInitialInfo(locale: Locale): Promise<SettingsData> {
             data['phone'],
             data['email_title'],
             data['email'],
-            data['client_title']
+            data['client_title'],
+            data['longitude'],
+            data['latitudes']
         );
     } else {
         const error = new Error(errors.map((e: { message: any; }) => e.message).join('\n') ?? "UNKNOWN")

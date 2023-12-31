@@ -12,7 +12,7 @@ type Props = {
 };
 export const InfoElement = (props: Props) => {
     return (
-        <li className={'flex mt-6  gap-6'}>
+        <li className={'flex items-center p-3 gap-6 rounded-3xl duration-300 hover:bg-appbarLinksBackground'}>
             <GradiantCard className={'p-5 rounded-[22px] h-fit'}>
                 <Icon name={props.icon} center={true} color={'white'} size={24}/>
             </GradiantCard>

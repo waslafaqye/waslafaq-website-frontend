@@ -39,11 +39,12 @@ export const Main = (props: Props) => {
     return (
         <MainLoader>
             <main className="flex min-h-screen select-none flex-col items-center relative ">
-                <GradiantCircle right={false}/>
-                <GradiantCircle right={true} top={true}/>
+
                 <Navbar info={info} navItems={props.navItems} details={false}/>
                 <Hero info={info.hero} page={props.page} id={'#Hero'}/>
-                <div className={' max-w-7xl flex flex-col gap-y-10 lg:px-10'}>
+                <div className={' max-w-7xl flex flex-col gap-y-10 lg:px-10 relative'}>
+                    <GradiantCircle right={false}/>
+                    <GradiantCircle right={true} top={true}/>
                     <AboutUs info={info} page={props.page} id={'#AboutUs'}/>
                     <OurVision info={info} id={'#OurVision'}/>
                     <Services services={services} info={info} page={props.page} id={'#Services'}/>

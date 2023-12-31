@@ -17,7 +17,7 @@ function OurVisionCard(props: props) {
                 <Icon name={props.icon} color={'white'} size={40} opacity={0.6}/>
             </div>
             <Title>{props.title}</Title>
-            <p>{props.description}</p>
+            <p className={'text-[1.1rem]'}>{props.description}</p>
         </GradiantCard>
     );
 }

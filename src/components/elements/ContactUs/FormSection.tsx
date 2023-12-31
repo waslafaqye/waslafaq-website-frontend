@@ -55,16 +55,17 @@ export function FormSection({page, action}: { page: any; action: any }) {
             toast({
                 color: 'white',
                 className: 'bg-white !text-2xl ',
-                title: "Request Submitted",
-                description: "We will contact you as soon as we get your request",
+                title: page.success,
+                description: page.successMessage,
             })
         } else {
             toast({
 
-                className: 'bg-[red] !text-2xl border-none text-white',
-                title: "Request Error !",
-                description: "Please try again latter",
-            })
+                    className: 'bg-[red] !text-2xl border-none text-white',
+                    title: page.error,
+                    description: page.errorMessage,
+                }
+            )
         }
         setIsLoading(false)
     }
@@ -86,6 +87,7 @@ export function FormSection({page, action}: { page: any; action: any }) {
                         <BeatLoader size={10} color={'white'}/>}
                     {!isLoading && page.Send}
                 </Button>
+
             </form>
         </Form>
     )

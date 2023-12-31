@@ -7,7 +7,7 @@ type Props = {
 };
 export const Title = (props: Props) => {
     return (
-        <h1 className={'font-bold  w-fit text-2xl'}>
+        <h1 className={'font-bold capitalize  w-fit text-2xl'}>
             {props.children}
         </h1>
     );
