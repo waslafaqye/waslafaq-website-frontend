@@ -25,10 +25,10 @@ export const Hero = (props: Props) => {
                 <div
 
 
-                    className={' lg:w-1/3 mx-auto lg:mx-60 text-center lg:text-start '}>
+                    className={' lg:w-1/3  mx-1 lg:mx-60 text-center lg:text-start '}>
 
                     <motion.p initial={{opacity: 0, y: 50}}
-                           
+
                               viewport={{once: true}}
                               whileInView={{
                                   opacity: 1,
